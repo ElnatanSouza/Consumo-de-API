@@ -1,6 +1,7 @@
 <?php
 require "./Models/Student.php";
-$students = Student::getAll();
+
+$total = Student::getTotalStudents();
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ $students = Student::getAll();
             data: {
                 labels: ['Monitores', 'Alunos'],
                 datasets: [{
-                    data: [2, 114],
+                    data: [15, <?= $total[0]["total_students"] ?>],
                     backgroundColor: [
                         '#be2121',
                         '#2172be'

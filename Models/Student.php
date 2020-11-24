@@ -12,11 +12,19 @@ class Student
     {
         // $conn = new Connection;
         // $connection = $conn->getDb();
-        
+
         # Mesma coisa do que o de cima
         $connection = Connection::getDb();
-        
+
         $stmt = $connection->query("SELECT * FROM students");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function getTotalStudents()
+    {
+        $connection = Connection::getDb();
+
+        $stmt = $connection->query("SELECT count(*) as total_students FROM students");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
